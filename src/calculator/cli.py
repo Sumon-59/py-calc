@@ -1,3 +1,10 @@
+"""
+CLI Calculator
+
+This module provides a command-line interface for performing calculations.
+It supports local computation and API-based computation using environment variables.
+"""
+
 import os
 import requests
 

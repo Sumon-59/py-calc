@@ -1,3 +1,9 @@
+"""
+Logger Configuration.
+
+This module provides a reusable logger setup with configurable log level using environment variables.
+"""
+
 import logging
 import os
 
