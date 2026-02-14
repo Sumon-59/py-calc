@@ -15,6 +15,7 @@ app = FastAPI(title="Calculator API", version="1.0.0")
 
 class CalcRequest(BaseModel):
     """Request model for calculator input."""
+
     a: float
     b: float
     op: str
