@@ -7,6 +7,7 @@ It supports local computation and API-based computation using environment variab
 
 import os
 import requests
+import json
 
 from calculator.core import add, sub, mul, div
 from calculator.logger import setup_logger
@@ -53,6 +54,20 @@ def main():
             result = calculate_local(a, b, op)
 
         print("Result:", result)
+        output_file = os.getenv("OUTPUT_FILE", "").strip()
+
+        if output_file:
+            payload = {
+                "a": a,
+                "b": b,
+                "op": op,
+                "result": result,
+                "mode": "api" if use_api else "local",
+            }
+
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(payload, f, indent=2)
+            logger.info("Wrote output file: %s", output_file)
         logger.info("Success result=%s", result)
 
     except ValueError as e:
